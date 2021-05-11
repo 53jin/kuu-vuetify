@@ -1,0 +1,42 @@
+fragment IdName on Role {
+    id, name
+}
+fragment Ts on Role {
+    created_at, updated_at
+}
+
+query find($id: Int!, $withPermissions: Boolean = false) {
+    data: Role(id: $id) {
+        ...IdName, ...Ts
+        permissions @include(if: $withPermissions) {
+            name
+        }
+    }
+}
+
+query all {
+    data: AllRoles {
+        ...IdName
+    }
+}
+
+query list($query: QueryInput) {
+    data: Roles(query: $query) {
+        total, current_page, per_page,
+        data {
+            ...IdName, ...Ts
+        }
+    }
+}
+
+mutation create($input: CreateRoleInput!) {
+    data: CreateRole(input: $input) {
+        ...IdName, ...Ts
+    }
+}
+
+mutation update($input: UpdateRoleInput!) {
+    data: UpdateRole(input: $input) {
+        ...IdName, ...Ts
+    }
+}

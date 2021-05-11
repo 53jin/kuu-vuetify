@@ -1,0 +1,45 @@
+@charset "UTF-8";
+// Variables
+// @import "variables";
+
+@import '~@mdi/font/css/materialdesignicons.css';
+@import '~material-design-icons-iconfont/dist/material-design-icons.css';
+// @import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css");
+@import '~@fortawesome/fontawesome-free/css/all.css';
+// @import url("https://fonts.loli.net/css?family=Raleway:300,400,600");
+@import '~vuetify/dist/vuetify.min.css';
+@import '~vuetify-dialog/dist/vuetify-dialog.css';
+
+.v-application a {
+    text-decoration: none;
+}
+.v-application a:hover {
+    color: #88aef8;
+    text-decoration: none;
+}
+
+//input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder {
+//  color:#bbb;
+//}
+//input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder {
+//  color:#bbb;
+//}
+//input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder {
+//  color:#bbb;
+//}
+//input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {
+//  color:#bbb;
+//}
+tr .hover-action {
+    // display:none;
+    visibility:hidden
+}
+tr:hover .hover-action {
+    visibility:visible;
+    // display: inline-block;
+}
+
+// Custom Vuetify
+.v-application--is-ltr .v-input--checkbox .v-input--selection-controls__input {
+    margin-right: 0;
+}

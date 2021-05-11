@@ -1,0 +1,55 @@
+fragment Data on Employee {
+    id user_id related_user_id is_am is_bd created_at updated_at
+    user {
+        id name
+    }
+    related_user {
+        id name first_name last_name email status email_verified_at
+    }
+    roles {
+        id name
+    }
+}
+
+mutation create($input: CreateEmployeeInput!) {
+    data: CreateEmployee(input: $input) {
+        ...Data
+    }
+}
+
+mutation update($input: UpdateEmployeeInput!) {
+    data: UpdateEmployee(input: $input) {
+        ...Data
+    }
+}
+
+mutation SendInviteEmail($id: Int!) {
+    data: SendInviteEmail(id: $id)
+}
+
+query find($id: Int!) {
+    data: Employee(id: $id) {
+        ...Data
+    }
+}
+
+query all {
+    data: AllEmployees {
+        related_user {
+            id name
+        }
+    }
+}
+
+query list($query: QueryInput) {
+    data: Employees(query: $query) {
+        total current_page per_page
+        data {
+            ...Data
+        }
+    }
+}
+
+query GetEmployeePermissions {
+    data: EmployeePermissions
+}

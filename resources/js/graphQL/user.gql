@@ -1,0 +1,22 @@
+query FindMeAndApp($withApp: Boolean = false) {
+    me: Me {
+        id, status, email, name, first_name, last_name
+        im_type, im_contact, is_owner
+        employee {
+            is_am, is_bd, permissions
+        }
+    },
+    app: App @include(if: $withApp) {
+        name, logo_image_url
+    }
+}
+
+query GetImTypes {
+    data: ImTypes{text, value}
+}
+
+mutation UpdateUser($data: UserInput) {
+    data: UpdateUser(data: $data) {
+        id
+    }
+}
